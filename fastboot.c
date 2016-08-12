@@ -315,6 +315,11 @@ int do_oem_command(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
+    if(getuid() != 0)
+    {	
+	printf("Run this tool as root!\n");
+	return 0;
+    }
     int wants_reboot = 0;
     int wants_reboot_bootloader = 0;
     void *data;
